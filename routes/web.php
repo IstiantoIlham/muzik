@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::controller(App\Http\Controllers\AdminController::class)->group(function () {
-    Route::get('admin', 'index')->name('admin.index');
+    Route::get('login', 'login')->name('login.page');
+    Route::post('loginForm', 'loginForm')->name('login.form');
+    Route::get('admin', 'index')->name('admin.page')->middleware('auth');
 });
 
 Route::controller(App\Http\Controllers\MusicController::class)->group(function () {
